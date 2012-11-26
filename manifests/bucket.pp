@@ -1,4 +1,4 @@
-define bucket($port, $size, $user='couchbase', $password='password', $type='memcached', $replica=1) {
+define couchbase::bucket($port, $size, $user='couchbase', $password='password', $type='memcached', $replica=1) {
     exec {"bucket-create-$title":
         path => '/opt/couchbase/bin/',
         require => Class['couchbase'],
