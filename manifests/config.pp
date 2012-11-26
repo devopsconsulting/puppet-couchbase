@@ -22,6 +22,7 @@ class couchbase::config($size, $user, $password, $peers) {
     exec {"couchbase-cluster-setup":
         path => ["/usr/local/bin", '/usr/bin/', '/opt/couchbase/bin'],
         command => "couchbase-cluster-setup.sh",
-        require => File['/usr/local/bin/couchbase-cluster-setup.sh']
+        require => File['/usr/local/bin/couchbase-cluster-setup.sh'],
+        returns => [0, 2]
     }
 }
