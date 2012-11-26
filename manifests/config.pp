@@ -1,6 +1,5 @@
 class couchbase::config($size, $user, $password, $peers) {
-
-    Exec['couchbase-init'] -> class {"firstrun":}
+    Class['couchbase::config'] -> class {"firstrun":}
 
     if $firstrun {
         exec {"couchbase-init":
