@@ -5,7 +5,8 @@ class couchbase::config($size, $user, $password, $peers) {
         exec {"couchbase-init":
             path => ['/opt/couchbase/bin', '/usr/bin/'],
             command => "couchbase-cli cluster-init -c localhost:8091 --cluster-init-username=$user --cluster-init-password=$password --cluster-init-port=8091 --cluster-init-ramsize=$size",
-            require => Class['couchbase::install']
+            require => Class['couchbase::install'],
+            logoutput => true
         }
         
         # let the other hosts know there is a new server in the pool.
@@ -23,6 +24,7 @@ class couchbase::config($size, $user, $password, $peers) {
         path => ["/usr/local/bin", '/usr/bin/', '/opt/couchbase/bin'],
         command => "couchbase-cluster-setup.sh",
         require => File['/usr/local/bin/couchbase-cluster-setup.sh'],
-        returns => [0, 2]
+        returns => [0, 2],
+        logoutput => true
     }
 }
