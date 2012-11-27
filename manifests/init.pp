@@ -1,4 +1,4 @@
-class couchbase($size=1024, $user='couchbase', $password='pasword', $version=latest, $peers=[]) {
+class couchbase($size=1024, $user='couchbase', $password='password', $version=latest, $peers=[]) {
     
     class {"couchbase::install":
         version => $version
