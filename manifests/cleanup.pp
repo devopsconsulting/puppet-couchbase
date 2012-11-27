@@ -1,4 +1,4 @@
-class couchbase::cleanup {
+class couchbase::cleanup($user='couchbase', $password='password') {
     file {"/usr/share/mcollective/plugins/mcollective/agent/cleaners/couchbase.rb":
         content => template('couchbase/couchbase.rb.erb'),
         owner => 'root',
